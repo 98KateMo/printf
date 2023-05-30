@@ -1,3 +1,8 @@
+#include <unistd.h>
+#include "main.h"
+#include <stdlib.h>
+#include <stdarg.h>
+
 int _signed_dec(va_list args)
 {
         int val, x, num, mul, tens = 1;
