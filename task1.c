@@ -20,7 +20,7 @@ int _signed_dec(va_list args)
 		++tens;
 	x = tens;
 	mul = 1;
-	for (val = 1; val / 10 >= 1; val /= 10)
+	for (val = i; val / 10 >= 1; val /= 10)
 	{
 		while (x > 1)
 		{
@@ -40,4 +40,3 @@ int _signed_dec(va_list args)
 	++characters;
 	return (characters);
 }
-
