@@ -1,3 +1,8 @@
+#include <unistd.h>
+#include "main.h"
+#include <stdlib.h>
+#include <stdarg.h>
+
 int _address(va_list args)
 {
         void *address = va_arg(args, void *);
