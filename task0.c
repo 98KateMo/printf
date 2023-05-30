@@ -1,3 +1,8 @@
+#include <unistd.h>
+#include "main.h"
+#include <stdlib.h>
+#include <stdarg.h>
+
 int _char(va_list args)
 {
         char c = va_arg(args, int);
