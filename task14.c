@@ -15,6 +15,8 @@ int _rot13(char *str, va_list args)
         char *a = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
         char *r = "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM";
 
+	if (c != NULL)
+	{
         for (i = 0; c[i] && c != NULL; i++)
         {
                 for (j = 0; a[j]; j++)
@@ -34,5 +36,6 @@ int _rot13(char *str, va_list args)
                 }
         }
 	str[x] = '\0';
+	}
         return (characters);
 }
