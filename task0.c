@@ -28,11 +28,14 @@ int _string(char *str, va_list args)
 	int i, characters = 0;
 	char *c = va_arg(args, char *);
 
-	for (i = 0; c[i] && c != NULL; i++)
+	if (c != NULL)
 	{
-		str[i] = c[i];
-		++characters;
+		for (i = 0; c[i] && c != NULL; i++)
+		{
+			str[i] = c[i];
+			++characters;
+		}
+		str[i] = '\0';
 	}
-	str[i] = '\0';
 	return (characters);
 }

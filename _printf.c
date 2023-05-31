@@ -43,7 +43,7 @@ int process_format(const char *format, va_list args)
 			}
 			if (format[i + 1] == '.')
 				for (precision = 0; format[i + 2] >= '0' &&  format[i + 2] <= '9'; i++)
-					precision *= 10 + (format[i + 2] - '0');
+					precision = precision * 10 + (format[i + 2] - '0');
 			if (format[i + 1] >= '1' && format[i + 1] <= '9')
 			{
 				for (width = 0; format[i + 1] >= '0' && format[i + 1]

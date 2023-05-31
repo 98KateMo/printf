@@ -11,11 +11,19 @@
  */
 int _rev(char *str, va_list args)
 {
-	int i = 0;
-	str = va_arg(args, char *);
+	int x = 0, i = 0;
+	char *c = va_arg(args, char *);
 
-	while (str[i] && str != NULL)
-		i++;
-	--i;
-	return (i);
+	if (c != NULL)
+	{
+		while (c[i] && c != NULL)
+			i++;
+		--i;
+		for (; i >= 0; i--)
+		{
+			str[x++] = c[i];
+		}
+		str[x] = '\0';
+	}
+	return (x);
 }
