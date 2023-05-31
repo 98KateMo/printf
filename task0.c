@@ -3,23 +3,36 @@
 #include <stdlib.h>
 #include <stdarg.h>
 
-int _char(va_list args)
+/**
+ * _char - prints a character
+ * @str: string
+ * @args: argument
+ * Return: int
+ */
+int _char(char *str, va_list args)
 {
 	char c = va_arg(args, int);
 
-	write(1, &c, 1);
+	str[0] = c;
+	str[1] = '\0';
 	return (1);
 }
-
-int _string(va_list args)
+/**
+ * _string - prints a string
+ * @str: string
+ * @args: argument
+ * Return: int
+ */
+int _string(char *str, va_list args)
 {
 	int i, characters = 0;
 	char *c = va_arg(args, char *);
 
 	for (i = 0; c[i] && c != NULL; i++)
 	{
-		write(1, &c[i], 1);
+		str[i] = c[i];
 		++characters;
 	}
+	str[i] = '\0';
 	return (characters);
 }

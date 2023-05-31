@@ -3,10 +3,16 @@
 #include <stdlib.h>
 #include <stdarg.h>
 
-int _signed_dec(va_list args)
+/**
+ * _signed_dec - prints a signed decimal
+ * @str: string
+ * @args: argument
+ * Return: int
+ */
+int _signed_dec(char *str, va_list args)
 {
 	int val, x, num, mul, tens = 1;
-	int characters = 0;
+	int s = 0, characters = 0;
 	int i = va_arg(args, int);
 	char digit[2];
 
@@ -32,11 +38,12 @@ int _signed_dec(va_list args)
 		num = (i / mul) * mul;
 		mul /= 10;
 		i -= num;
-		write(1, &digit[0], 1);
+		str[s++] = digit[0];
 		++characters;
 	}
 	digit[0] = (i % 10) + '0';
-	write(1, &digit[0], 1);
+	str[s] = digit[0];
+	str[++s] = '\0';
 	++characters;
 	return (characters);
 }

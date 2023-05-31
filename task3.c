@@ -3,10 +3,16 @@
 #include <stdlib.h>
 #include <stdarg.h>
 
-int  _unsigned_dec(va_list args)
+/**
+ * _unsigned_dec - prints an unsigned decimal
+ * @str: string
+ * @args: argument
+ * Return: int
+ */
+int  _unsigned_dec(char *str, va_list args)
 {
         unsigned int val, x, num, mul, tens = 1;
-        int characters = 0;
+        int j = 0, characters = 0;
         unsigned int i = va_arg(args, unsigned int);
         char digit[2];
 
@@ -16,34 +22,38 @@ int  _unsigned_dec(va_list args)
         mul = 1;
         for (val = i; val / 10 >= 1; val /= 10)
         {
-                while (x > 1)
-                {
+                for (; x > 1; --x)
                         mul *= 10;
-                        --x;
-                }
                 digit[0] = (i / mul) + '0';
                 digit[1] = '\0';
                 num = (i / mul) * mul;
                 mul /= 10;
                 i -= num;
-                write(1, &digit[0], 1);
+                str[j++] = digit[0];
                 ++characters;
         }
         digit[0] = (i % 10) + '0';
-        write(1, &digit[0], 1);
+        str[j] = digit[0];
+	str[++j] = '\0';
         ++characters;
         return (characters);
 }
 
-int _octal(va_list args)
+/**
+ * _octal - prints an octal number
+ * @str: string
+ * @args: argument
+ * Return: int
+ */
+int _octal(char *str, va_list args)
 {
-        int x, j = 0, characters = 0;
+        int x, s = 0, j = 0, characters = 0;
         unsigned int i = va_arg(args, unsigned int);
         char digit[BUFFER_SIZE];
 
         if (i == 0)
         {
-                write(1, "0", 1);
+                str[s] = '0';
                 return (1);
         }
         while (i != 0)
@@ -54,11 +64,11 @@ int _octal(va_list args)
         }
         for (i = j - 1; i > 0; i--)
         {
-                write(1, &digit[i], 1);
+                str[s++] = digit[i];
                 ++characters;
         }
-        write(1, &digit[i], 1);
+        str[s] = digit[i];
+	str[++s] = '\0';
         ++characters;
         return (characters);
 }
-   

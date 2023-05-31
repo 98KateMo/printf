@@ -3,15 +3,22 @@
 #include <stdlib.h>
 #include <stdarg.h>
 
-int _address(va_list args)
+/**
+ * _address - prints a memory address
+ * @str: string
+ * @args: arguments
+ * Return: int
+ */
+int _address(char *str, va_list args)
 {
         void *address = va_arg(args, void *);
         intptr_t num = (intptr_t)address;
         char hex[17] = {0};
-        int remainder, i = 0;
+        int remainder, j = 0, i = 0;
         int characters = 0;
 
-        write(1, "0x", 2);
+        str[j++] = '0';
+	str[j++] = 'x';
         characters = 2;
 
         while (num != 0)
@@ -23,8 +30,9 @@ int _address(va_list args)
         }
         for (i = i - 1; i >= 0; i--)
         {
-                write(1, &hex[i], 1);
+                str[j++] = hex[i];
                 ++characters;
         }
+	str[j] = '\0';
         return (characters);
 }

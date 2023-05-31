@@ -5,21 +5,17 @@
 
 /**
  * _rev - prints a string in reverse
+ * @str: string
  * @args: string to be reversed
  * Return: int
  */
-int _rev(va_list args)
+int _rev(char *str, va_list args)
 {
-	int i = 0, characters = 0;
-	char *str = va_arg(args, char *);
+	int i = 0;
+	str = va_arg(args, char *);
 
 	while (str[i] && str != NULL)
 		i++;
 	--i;
-	for (; i >= 0; i--)
-	{
-		write(1, &str[i], 1);
-		++characters;
-	}
-	return (characters);
+	return (i);
 }

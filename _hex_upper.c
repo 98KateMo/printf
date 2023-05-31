@@ -4,14 +4,15 @@
 #include <unistd.h>
 /**
  * _hex_upper - prints number in hex
+ * @str: string
  * @args: argument to be converted
  * Return: int
  */
-int _hex_upper(va_list args)
+int _hex_upper(char *str, va_list args)
 {
 	unsigned int num = va_arg(args, unsigned int);
 	char hex[17] = {0};
-	int remainder, i = 0;
+	int remainder, j = 0, i = 0;
 	int characters = 0;
 
 	while (num != 0)
@@ -23,8 +24,9 @@ int _hex_upper(va_list args)
 	}
 	for (i = i - 1; i >= 0; i--)
 	{
-		write(1, &hex[i], 1);
+		str[j++] = hex[i];
 		++characters;
 	}
+	str[j] = '\0';
 	return (characters);
 }

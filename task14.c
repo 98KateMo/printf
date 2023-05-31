@@ -2,15 +2,15 @@
 #include <stdlib.h>
 #include <stdarg.h>
 #include <unistd.h>
-/* 
-* _rot13 - Converts and prints a string in rot13.
- * @n: character counter.
- * @args: argument to be processed.
- * Return: void
-*/
-int _rot13(va_list args)
+/**
+ * _rot13 - prints a string in rot13
+ * @str: string
+ * @args: argument
+ * Return: int
+ */
+int _rot13(char *str, va_list args)
 {
-        int i, j, characters = 0;
+        int i, j, x = 0, characters = 0;
         char *c = va_arg(args, char *);
         char *a = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
         char *r = "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM";
@@ -21,17 +21,18 @@ int _rot13(va_list args)
                 {
                         if (c[i] == a[j])
                         {
-                                write(1, &r[j], 1);
+                                str[x++] = r[j];
                                 ++characters;
                                 break;
                         }
                         else
                         {
-                                write(1, &c[i], 1);
+                                str[x++] = c[i];
                                 ++characters;
                                 break;
                         }
                 }
         }
+	str[x] = '\0';
         return (characters);
 }
